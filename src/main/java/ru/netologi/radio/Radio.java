@@ -4,13 +4,19 @@ public class Radio {
 
     private int currentNumberRadio;
     private int currentVolume;
-    private int numberMinRadio = 0;                          // Минимальный номер радиостанции
-    private int numberMaxRadio = 9;                          // Максимальный номер радиостанции
-    private int levelMinVolume = 0;                          // Минимальный уровень громкости
-    private int levelMaxVolume = 100;                          // Максимальный уровень громкости
+    private int numberMinRadio = 0;               // Минимальный номер радиостанции
+    private int numberMaxRadio;                   // Максимальный номер радиостанции можно затать пользователем
+    private int levelMinVolume = 0;               // Минимальный уровень громкости
+    private int levelMaxVolume = 100;             // Максимальный уровень громкости
 
-    public int getCurrentNumberRadio() {
-        return currentNumberRadio;
+
+    public void setNumberMaxUserRadio(int numMaxRadio) {
+        int n = numMaxRadio - 1;
+        if (n > 9) {
+            numberMaxRadio = n;
+        } else {
+            numberMaxRadio = 9;
+        }
     }
 
     public void setCurrentNumberRadio(int newCurrentNumberRadio) {     // Выбор станции по ее номеру
@@ -23,6 +29,11 @@ public class Radio {
         currentNumberRadio = newCurrentNumberRadio;
 
     }
+
+    public int getCurrentNumberRadio() {
+        return currentNumberRadio;
+    }
+
 
     public void setNextCurrentNumberRadio() {                  // Переключение станций next
         if (currentNumberRadio < numberMaxRadio) {
